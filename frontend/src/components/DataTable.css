@@ -23,7 +23,7 @@
 
 .search-input:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #8b9dc3;
 }
 
 .record-count {
@@ -49,7 +49,7 @@ table {
 thead {
   position: sticky;
   top: 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #9facbd 0%, #b8c5d6 100%);
   z-index: 10;
 }
 
@@ -59,7 +59,7 @@ th {
   color: white;
   font-weight: 600;
   font-size: 0.9rem;
-  border-bottom: 2px solid #5568d3;
+  border-bottom: 2px solid #8b9dc3;
 }
 
 tbody tr {
@@ -67,15 +67,15 @@ tbody tr {
 }
 
 tbody tr:hover {
-  background-color: rgba(102, 126, 234, 0.05);
+  background-color: rgba(159, 172, 189, 0.08);
 }
 
 tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #fafbfc;
 }
 
 tbody tr:nth-child(even):hover {
-  background-color: rgba(102, 126, 234, 0.08);
+  background-color: rgba(159, 172, 189, 0.12);
 }
 
 td {
@@ -92,7 +92,7 @@ td.editing {
 .cell-input {
   width: 100%;
   padding: 10px 15px;
-  border: 2px solid #667eea;
+  border: 2px solid #8b9dc3;
   font-size: 0.9rem;
   background: #fff;
   outline: none;
@@ -107,7 +107,7 @@ td.editing {
 }
 
 .page-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #8b9dc3 0%, #a8b8d8 100%);
   color: white;
   border: none;
   padding: 8px 16px;
@@ -115,11 +115,12 @@ td.editing {
   cursor: pointer;
   transition: all 0.2s;
   font-size: 0.9rem;
+  box-shadow: 0 2px 6px rgba(139, 157, 195, 0.25);
 }
 
 .page-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 10px rgba(139, 157, 195, 0.35);
 }
 
 .page-btn:disabled {
@@ -137,6 +138,7 @@ td.editing {
   color: #999;
   font-size: 0.85rem;
   padding: 10px;
-  background: rgba(102, 126, 234, 0.05);
+  background: rgba(247, 250, 252, 0.6);
   border-radius: 6px;
+  border: 1px solid rgba(226, 232, 240, 0.5);
 }
