@@ -1,16 +1,19 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import './FileUpload.css';
 
 function FileUpload({ onFileUpload, loading, error }) {
+  const [customKeywords, setCustomKeywords] = useState('');
+  const [showAdvanced, setShowAdvanced] = useState(false);
+
   const handleDrop = useCallback((e) => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
     if (file && (file.name.endsWith('.xlsx') || file.name.endsWith('.xls'))) {
-      onFileUpload(file);
+      onFileUpload(file, customKeywords);
     } else {
       alert('Please upload an Excel file (.xlsx or .xls)');
     }
-  }, [onFileUpload]);
+  }, [onFileUpload, customKeywords]);
 
   const handleDragOver = useCallback((e) => {
     e.preventDefault();
@@ -19,9 +22,9 @@ function FileUpload({ onFileUpload, loading, error }) {
   const handleFileChange = useCallback((e) => {
     const file = e.target.files[0];
     if (file) {
-      onFileUpload(file);
+      onFileUpload(file, customKeywords);
     }
-  }, [onFileUpload]);
+  }, [onFileUpload, customKeywords]);
 
   return (
     <div className="file-upload">
@@ -61,6 +64,35 @@ function FileUpload({ onFileUpload, loading, error }) {
         </div>
       )}
 
+      <div className="advanced-options">
+        <button 
+          className="toggle-advanced"
+          onClick={() => setShowAdvanced(!showAdvanced)}
+        >
+          {showAdvanced ? '▼' : '▶'} Advanced Options
+        </button>
+        
+        {showAdvanced && (
+          <div className="keywords-section">
+            <label htmlFor="custom-keywords">
+              <strong>Custom Financial Keywords</strong> (optional)
+            </label>
+            <input
+              type="text"
+              id="custom-keywords"
+              className="keywords-input"
+              placeholder="e.g., Mutual Funds, Savings, Loans, Fixed Deposits, Stocks, ESOPS"
+              value={customKeywords}
+              onChange={(e) => setCustomKeywords(e.target.value)}
+            />
+            <p className="keywords-hint">
+              💡 Enter comma-separated keywords to detect in your financial data. 
+              Default keywords include: income, expense, savings, investments, etc.
+            </p>
+          </div>
+        )}
+      </div>
+
       <div className="info-section">
         <h4>📋 Sample Excel Format</h4>
         <p>Your Excel sheet should contain financial data with columns like:</p>
@@ -71,6 +103,11 @@ function FileUpload({ onFileUpload, loading, error }) {
           <li><strong>Amount</strong> - Transaction amount</li>
           <li><strong>Type</strong> - Income or Expense</li>
         </ul>
+        <p className="supported-keywords">
+          <strong>Supported Financial Terms:</strong> Mutual Funds, Savings, Loans, Liabilities, 
+          Provident Fund, Debt, Fixed Deposits, Recurring Deposits, Stocks, ESOPS, Insurance, 
+          EMI, Credit Card, Mortgage, Salary, Bonus, Dividends, and more.
+        </p>
       </div>
     </div>
   );

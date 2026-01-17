@@ -4,14 +4,16 @@ import 'react-grid-layout/css/styles.css';
 import SummaryCard from './SummaryCard';
 import ChartWidget from './ChartWidget';
 import DataTable from './DataTable';
+import AIAssistant from './AIAssistant';
 import './Dashboard.css';
 
 function Dashboard({ data }) {
   const [layouts, setLayouts] = useState([
     { i: 'summary', x: 0, y: 0, w: 12, h: 2, minW: 6, minH: 2 },
-    { i: 'chart1', x: 0, y: 2, w: 6, h: 4, minW: 3, minH: 3 },
-    { i: 'chart2', x: 6, y: 2, w: 6, h: 4, minW: 3, minH: 3 },
-    { i: 'table', x: 0, y: 6, w: 12, h: 5, minW: 6, minH: 4 },
+    { i: 'ai', x: 0, y: 2, w: 6, h: 5, minW: 4, minH: 4 },
+    { i: 'chart1', x: 6, y: 2, w: 6, h: 4, minW: 3, minH: 3 },
+    { i: 'chart2', x: 0, y: 7, w: 6, h: 4, minW: 3, minH: 3 },
+    { i: 'table', x: 0, y: 11, w: 12, h: 5, minW: 6, minH: 4 },
   ]);
 
   const [editMode, setEditMode] = useState(false);
@@ -92,6 +94,12 @@ function Dashboard({ data }) {
           </div>
           <div className="widget-content">
             <SummaryCard analysis={analysis} />
+          </div>
+        </div>
+
+        <div key="ai" className="widget">
+          <div className="widget-content no-padding">
+            <AIAssistant dataId={data.data_id} />
           </div>
         </div>
 

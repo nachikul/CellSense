@@ -14,6 +14,9 @@ An intelligent finance analysis dashboard that transforms your Excel spreadsheet
 - **✏️ Editable Data**: Double-click any cell to edit values on the fly
 - **🔍 Smart Search**: Filter and search through your transactions
 - **💰 Financial Summary**: Automatic calculation of income, expenses, and balance
+- **🤖 AI Financial Assistant**: Ask questions about your finances in plain English
+- **🏷️ Custom Keywords**: Add your own financial keywords (Mutual Funds, ESOPS, etc.)
+- **🐳 Docker Support**: Easy deployment with Docker and Docker Compose
 - **📱 Responsive Design**: Works on desktop, tablet, and mobile devices
 
 ## 🚀 Quick Start
@@ -45,6 +48,20 @@ npm install
 ```
 
 ### Running the Application
+
+#### Option 1: Docker (Recommended for Production)
+
+```bash
+# Quick start with Docker Compose
+docker-compose up -d
+
+# Access the application at http://localhost
+# Backend API: http://localhost:8000
+```
+
+See [DOCKER.md](DOCKER.md) for detailed deployment instructions.
+
+#### Option 2: Local Development
 
 1. **Start the Backend Server**
 ```bash
@@ -87,6 +104,18 @@ Once uploaded, you'll see:
 - Double-click any cell in the transaction table to edit
 - Press Enter or click outside to save changes
 
+### 5. Ask AI Questions
+
+- Use the AI Financial Assistant to ask questions in plain English
+- Examples: "What's my total income?", "How much did I spend on groceries?"
+- Get instant answers based on your financial data
+
+### 6. Use Custom Keywords (Optional)
+
+- Click "Advanced Options" during upload
+- Add your own keywords: Mutual Funds, ESOPS, Fixed Deposits, etc.
+- The app will detect and highlight these terms in your data
+
 ## 📋 Excel File Format
 
 Your Excel file should contain columns like:
@@ -105,6 +134,17 @@ Your Excel file should contain columns like:
 - **Type**: "Income" or "Expense" (optional)
 
 **Note**: Column names are flexible - the app will auto-detect common variations like "expense", "spending", "cost", "income", "revenue", etc.
+
+### Extended Financial Keywords Support
+
+The app automatically detects these financial terms and more:
+- **Investments**: Mutual Funds, Stocks, ESOPS, Fixed Deposits, Recurring Deposits
+- **Liabilities**: Loans, Debt, EMI, Credit Card, Mortgage
+- **Savings**: Provident Fund (PF/EPF), Savings Account
+- **Income**: Salary, Bonus, Dividends, Interest
+- **Insurance**: Premium, Policy
+
+You can also add custom keywords during upload for personalized detection.
 
 ## 🔧 Sample Data
 
@@ -161,7 +201,7 @@ CellSense/
 
 ### `POST /api/upload`
 Upload and analyze an Excel file
-- **Input**: Excel file (.xlsx, .xls)
+- **Input**: Excel file (.xlsx, .xls), optional custom_keywords
 - **Output**: Parsed data and analysis
 
 ### `GET /api/data/{data_id}`
@@ -173,6 +213,11 @@ Retrieve uploaded data by ID
 Perform detailed analysis on uploaded data
 - **Input**: Data ID
 - **Output**: Comprehensive analysis with trends and categories
+
+### `POST /api/ask-ai`
+Ask questions about your financial data
+- **Input**: Data ID and question in plain English
+- **Output**: AI-generated answer with source attribution
 
 ## 🎨 Features in Detail
 
@@ -186,11 +231,13 @@ Perform detailed analysis on uploaded data
 - Calculation of totals, averages, min/max values
 - Category-wise breakdown
 - Trend analysis (when date columns are present)
+- Extended keyword detection (50+ financial terms)
 
-### Interactive Charts
-- **Pie Chart**: Visual percentage breakdown of categories
-- **Bar Chart**: Comparative view of spending by category
-- Responsive and touch-friendly
+### AI Financial Assistant
+- Natural language question answering
+- Rule-based intelligent responses
+- Optional AI model integration (Hugging Face)
+- Context-aware answers based on your data
 
 ### Editable Data Table
 - Double-click to edit any cell

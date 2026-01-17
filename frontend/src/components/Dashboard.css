@@ -92,6 +92,10 @@
   background: white;
 }
 
+.widget-content.no-padding {
+  padding: 0;
+}
+
 /* React Grid Layout overrides */
 .react-grid-item.react-grid-placeholder {
   background: rgba(102, 126, 234, 0.2);

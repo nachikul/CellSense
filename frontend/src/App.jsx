@@ -9,12 +9,15 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleFileUpload = useCallback(async (file) => {
+  const handleFileUpload = useCallback(async (file, customKeywords = '') => {
     setLoading(true);
     setError(null);
     
     const formData = new FormData();
     formData.append('file', file);
+    if (customKeywords) {
+      formData.append('custom_keywords', customKeywords);
+    }
 
     try {
       const response = await axios.post('/api/upload', formData, {
