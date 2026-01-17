@@ -8,6 +8,7 @@ from typing import List, Dict, Any, Optional
 import os
 import json
 from datetime import datetime
+import uuid
 import httpx
 
 app = FastAPI(title="CellSense API", version="1.0.0")
@@ -47,6 +48,64 @@ class UploadRequest(BaseModel):
     custom_keywords: Optional[List[str]] = None
 
 
+def _dedupe_columns(names: List[str]) -> List[str]:
+    seen = {}
+    deduped = []
+    for name in names:
+        base = str(name).strip()
+        if not base:
+            base = "Column"
+        count = seen.get(base, 0) + 1
+        seen[base] = count
+        deduped.append(base if count == 1 else f"{base} ({count})")
+    return deduped
+
+
+def _normalize_dataframe(df: pd.DataFrame) -> pd.DataFrame:
+    if df.empty:
+        return df
+    df = df.dropna(axis=0, how='all').dropna(axis=1, how='all')
+    return df
+
+
+def _promote_first_row_to_header(df: pd.DataFrame) -> pd.DataFrame:
+    if df.empty:
+        return df
+    first_row = df.iloc[0].tolist()
+    if not any(isinstance(val, str) and val.strip() for val in first_row):
+        return df
+    df = df[1:].reset_index(drop=True)
+    headers = []
+    for idx, val in enumerate(first_row):
+        header = str(val).strip() if val not in (None, "") and str(val).strip() else f"Column {idx + 1}"
+        headers.append(header)
+    df.columns = _dedupe_columns(headers)
+    return df
+
+
+def load_excel_dataframe(file_path: str) -> pd.DataFrame:
+    """Load Excel file and normalize into a usable table."""
+    engine_kwargs = {"data_only": True} if file_path.lower().endswith(".xlsx") else {}
+    df = pd.read_excel(file_path, engine="openpyxl", engine_kwargs=engine_kwargs)
+    df = _normalize_dataframe(df)
+
+    if df.empty or df.dropna(axis=0, how='all').empty:
+        df = pd.read_excel(file_path, engine="openpyxl", header=None, engine_kwargs=engine_kwargs)
+        df = _normalize_dataframe(df)
+
+    if df.empty:
+        return df
+
+    unnamed_or_numeric = all(
+        isinstance(col, int) or str(col).startswith("Unnamed")
+        for col in df.columns
+    )
+    if unnamed_or_numeric:
+        df = _promote_first_row_to_header(df)
+
+    return df
+
+
 @app.get("/")
 async def root():
     return {"message": "CellSense API is running", "version": "1.0.0"}
@@ -70,14 +129,16 @@ async def upload_file(
         if not file.filename.endswith(('.xlsx', '.xls')):
             raise HTTPException(status_code=400, detail="Only Excel files (.xlsx, .xls) are supported")
         
-        # Save file
-        file_path = os.path.join(UPLOAD_DIR, file.filename)
+        # Save file with a safe, non-user-controlled filename
+        extension = os.path.splitext(file.filename)[1].lower()
+        safe_filename = f"{uuid.uuid4().hex}{extension}"
+        file_path = os.path.join(UPLOAD_DIR, safe_filename)
         with open(file_path, "wb") as f:
             content = await file.read()
             f.write(content)
         
         # Read Excel file
-        df = pd.read_excel(file_path)
+        df = load_excel_dataframe(file_path)
         
         # Convert DataFrame to JSON-serializable format
         data = df.replace({np.nan: None}).to_dict(orient='records')
@@ -90,6 +151,7 @@ async def upload_file(
         data_id = str(datetime.now().timestamp())
         data_store[data_id] = {
             'filename': file.filename,
+            'stored_filename': safe_filename,
             'data': data,
             'columns': columns,
             'analysis': analysis,

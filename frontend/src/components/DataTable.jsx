@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './DataTable.css';
 
 function DataTable({ data, columns }) {
@@ -8,8 +8,12 @@ function DataTable({ data, columns }) {
   const [tableData, setTableData] = useState(data);
   const itemsPerPage = 10;
 
+  useEffect(() => {
+    setTableData(data);
+  }, [data]);
+
   // Filter data based on search
-  const filteredData = tableData.filter(row =>
+  const filteredData = (tableData || []).filter(row =>
     Object.values(row).some(value =>
       String(value).toLowerCase().includes(searchTerm.toLowerCase())
     )
