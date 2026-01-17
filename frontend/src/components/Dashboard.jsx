@@ -80,7 +80,7 @@ function Dashboard({ data }) {
         layout={layouts}
         cols={12}
         rowHeight={60}
-        width={1360}
+        width={typeof window !== 'undefined' ? Math.min(window.innerWidth - 100, 1360) : 1360}
         onLayoutChange={handleLayoutChange}
         isDraggable={editMode}
         isResizable={editMode}

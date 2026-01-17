@@ -56,5 +56,5 @@ for row in data_rows:
     ws.append(row)
 
 # Save the file
-wb.save("samples/sample_finances.xlsx")
-print("Sample Excel file created: samples/sample_finances.xlsx")
+wb.save("sample_finances.xlsx")
+print("Sample Excel file created: sample_finances.xlsx")
