@@ -1,0 +1,17 @@
+.chart-widget {
+  height: 100%;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-empty {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+}
+
+.chart-empty p {
+  font-size: 1rem;
+}
