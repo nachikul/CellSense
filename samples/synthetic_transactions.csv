@@ -1,0 +1,108 @@
+Date,Category,Description,Amount,Type
+2024-07-15,Salary,Monthly Salary,8000,Income
+2024-08-01,Salary,Monthly Salary,8000,Income
+2024-08-15,Salary,Monthly Salary,8000,Income
+2024-09-01,Salary,Monthly Salary,8000,Income
+2024-09-15,Salary,Monthly Salary,8000,Income
+2024-10-01,Salary,Monthly Salary,8000,Income
+2024-12-15,Salary,Annual Bonus,15000,Income
+2024-07-20,Investment,Dividend Payment,500,Income
+2024-08-20,Investment,Dividend Payment,500,Income
+2024-09-20,Investment,Dividend Payment,500,Income
+2024-07-25,Investment,Interest Income,300,Income
+2024-08-25,Investment,Interest Income,300,Income
+2024-09-25,Investment,Interest Income,300,Income
+2024-08-10,Freelance,Project Payment,2500,Income
+2024-09-10,Freelance,Project Payment,2500,Income
+2024-10-10,Freelance,Project Payment,2500,Income
+2024-07-05,Groceries,Walmart Shopping,350,Expense
+2024-07-12,Groceries,Walmart Shopping,380,Expense
+2024-07-19,Groceries,Whole Foods,280,Expense
+2024-07-26,Groceries,Walmart Shopping,320,Expense
+2024-08-02,Groceries,Walmart Shopping,365,Expense
+2024-08-09,Groceries,Whole Foods,295,Expense
+2024-08-16,Groceries,Walmart Shopping,340,Expense
+2024-08-23,Groceries,Walmart Shopping,355,Expense
+2024-09-06,Groceries,Whole Foods,270,Expense
+2024-09-13,Groceries,Walmart Shopping,360,Expense
+2024-09-20,Groceries,Walmart Shopping,375,Expense
+2024-09-27,Groceries,Whole Foods,285,Expense
+2024-07-08,Transportation,Gas,60,Expense
+2024-07-15,Transportation,Uber Ride,25,Expense
+2024-07-22,Transportation,Gas,65,Expense
+2024-07-29,Transportation,Public Transit,45,Expense
+2024-08-05,Transportation,Gas,58,Expense
+2024-08-12,Transportation,Uber Ride,28,Expense
+2024-08-19,Transportation,Gas,62,Expense
+2024-08-26,Transportation,Gas,60,Expense
+2024-09-02,Transportation,Uber Ride,22,Expense
+2024-09-09,Transportation,Gas,63,Expense
+2024-09-16,Transportation,Public Transit,45,Expense
+2024-09-23,Transportation,Gas,59,Expense
+2024-07-10,Dining,Restaurant Dinner,85,Expense
+2024-07-14,Dining,Coffee Shop,12,Expense
+2024-07-18,Dining,Restaurant Dinner,95,Expense
+2024-07-21,Dining,Coffee Shop,10,Expense
+2024-07-28,Dining,Restaurant Dinner,88,Expense
+2024-08-04,Dining,Coffee Shop,15,Expense
+2024-08-11,Dining,Restaurant Dinner,92,Expense
+2024-08-14,Dining,Coffee Shop,12,Expense
+2024-08-18,Dining,Restaurant Dinner,90,Expense
+2024-08-25,Dining,Coffee Shop,13,Expense
+2024-09-01,Dining,Restaurant Dinner,87,Expense
+2024-09-08,Dining,Coffee Shop,11,Expense
+2024-09-15,Dining,Restaurant Dinner,93,Expense
+2024-09-22,Dining,Coffee Shop,14,Expense
+2024-09-29,Dining,Restaurant Dinner,89,Expense
+2024-07-03,Utilities,Electricity Bill,120,Expense
+2024-07-05,Utilities,Internet Bill,80,Expense
+2024-08-03,Utilities,Electricity Bill,125,Expense
+2024-08-05,Utilities,Internet Bill,80,Expense
+2024-09-03,Utilities,Electricity Bill,118,Expense
+2024-09-05,Utilities,Internet Bill,80,Expense
+2024-07-07,Entertainment,Movie Tickets,45,Expense
+2024-07-10,Entertainment,Streaming Service,15,Expense
+2024-08-07,Entertainment,Movie Tickets,48,Expense
+2024-08-10,Entertainment,Streaming Service,15,Expense
+2024-09-07,Entertainment,Movie Tickets,42,Expense
+2024-09-10,Entertainment,Streaming Service,15,Expense
+2024-07-11,Healthcare,Doctor Visit,150,Expense
+2024-07-18,Healthcare,Pharmacy,45,Expense
+2024-08-11,Healthcare,Doctor Visit,155,Expense
+2024-08-18,Healthcare,Pharmacy,48,Expense
+2024-09-11,Healthcare,Doctor Visit,148,Expense
+2024-09-18,Healthcare,Pharmacy,43,Expense
+2024-07-13,Shopping,Clothing,200,Expense
+2024-07-20,Shopping,Electronics,500,Expense
+2024-08-13,Shopping,Clothing,220,Expense
+2024-08-20,Shopping,Electronics,480,Expense
+2024-09-13,Shopping,Clothing,195,Expense
+2024-09-20,Shopping,Electronics,520,Expense
+2024-07-01,Housing,Rent Payment,1500,Expense
+2024-08-01,Housing,Rent Payment,1500,Expense
+2024-09-01,Housing,Rent Payment,1500,Expense
+2024-10-01,Housing,Rent Payment,1500,Expense
+2024-07-15,Loan,Car Loan Payment,450,Expense
+2024-08-15,Loan,Car Loan Payment,450,Expense
+2024-09-15,Loan,Car Loan Payment,450,Expense
+2024-07-20,Loan,Student Loan,300,Expense
+2024-08-20,Loan,Student Loan,300,Expense
+2024-09-20,Loan,Student Loan,300,Expense
+2024-07-25,Savings,Emergency Fund Deposit,1000,Expense
+2024-08-25,Savings,Emergency Fund Deposit,1000,Expense
+2024-09-25,Savings,Emergency Fund Deposit,1000,Expense
+2024-07-30,Savings,Investment Deposit,2000,Expense
+2024-08-30,Savings,Investment Deposit,2000,Expense
+2024-09-30,Savings,Investment Deposit,2000,Expense
+2024-07-05,Mutual Funds,Monthly MF Contribution,5000,Expense
+2024-08-05,Mutual Funds,Monthly MF Contribution,5000,Expense
+2024-09-05,Mutual Funds,Monthly MF Contribution,5000,Expense
+2024-07-10,Provident Fund,EPF Contribution,12000,Expense
+2024-08-10,Provident Fund,EPF Contribution,12000,Expense
+2024-09-10,Provident Fund,EPF Contribution,12000,Expense
+2024-07-15,Fixed Deposit,FD Interest,500,Expense
+2024-08-15,Fixed Deposit,FD Interest,500,Expense
+2024-09-15,Fixed Deposit,FD Interest,500,Expense
+2024-07-01,Insurance,Life Insurance Premium,2500,Expense
+2024-08-01,Insurance,Life Insurance Premium,2500,Expense
+2024-09-01,Insurance,Life Insurance Premium,2500,Expense
